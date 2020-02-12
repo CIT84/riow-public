@@ -1,0 +1,29 @@
+.playerInput {
+    outline: none;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background: #c7c3c3;
+    padding: 15px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.playerInput:focus {
+  color: #0a0a0a;
+  background: #ffffff;
+}
+
+.playerInput::placeholder {
+    font-family: 'Acme', sans-serif;
+    color: #0a0a0a;
+  }
+
+.playerInput--error {
+    color: #f3eded;
+    background: #f0547d;
+    border-color: #d50000;
+  }
+  
+.playerInput--error::placeholder {
+    color: #f8f7f7;
+  }
+

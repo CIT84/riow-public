@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Acme';
+  src: local('Acme'), url(./fonts/Acme-Regular.ttf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'Acme', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
