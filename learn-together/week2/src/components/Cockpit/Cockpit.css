@@ -1,0 +1,30 @@
+.red{
+    color: red;
+  
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+
+.Crockpit button {
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1x solid blue;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .Crockpit button:hover {
+        background-color: lightgreen;
+        color: black;
+  }
+  
+  .Crockpit button.Red{
+    background-color: red;
+  }
+  
+  .Crockpit button.Red:hover {
+    background-color: salmon;
+  }
