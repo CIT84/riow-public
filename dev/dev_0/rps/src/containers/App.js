@@ -34,12 +34,19 @@ class App extends Component {
     
   }
 
+  changePlayerHander = (e) =>{
+    this.setState({showGame: false})
+  }
+
+
   handleUserSelection = (e) => {
     const gameChoice = this.getGameChoice(this.getRandomInterger(0, 2))
     const playerChoice = e.target.name
+    console.log(gameChoice, playerChoice)
     const gameObj = this.getRPSResult(this.state.currentPlayer, gameChoice, playerChoice)
     const history = [...this.state.gameHistory]
     history.push(gameObj)
+    console.log(history)
     this.setState({gameHistory: history})
   }
 
@@ -48,9 +55,9 @@ class App extends Component {
     let gameObj = null
     let gameOutput = null
     if (playerChoice === gameChoice) {
+        gameOutput = `${playerChoice} for both Player and Game- Tie`
         result='Tie'
-    }
-    if (playerChoice === 'Rock') {
+    } else if (playerChoice === 'Rock') {
         if (gameChoice === 'Scissors') {
           gameOutput = 'Rock beats Scissors - Player Wins'
           result='Win'
@@ -58,8 +65,7 @@ class App extends Component {
           gameOutput = 'Scissors beats Paper - Game Wins'
           result='Loss'
         }
-    }
-    if (playerChoice === 'Paper') {
+    } else if (playerChoice === 'Paper') {
         if (gameChoice === 'Rock') { 
             gameOutput = 'Paper beats Rock - Player Wins'
             result='Win'
@@ -67,9 +73,7 @@ class App extends Component {
             gameOutput = 'Scisster cuts Paper - Game Wins'
             result='Loss'
         }
-    }
-
-    if (playerChoice === 'Scissors') {
+    } else if (playerChoice === 'Scissors') {
         if (gameChoice === 'Paper') {
             gameOutput = 'Scissors Cut Paper - Player Wins'
             result='Win'
@@ -98,22 +102,26 @@ class App extends Component {
   getGameChoice = (choiceInt) => {
     if (choiceInt === 0) {
         return 'Rock'
-    } else if (choiceInt === 2) {
+    } else if (choiceInt === 1) {
         return 'Scissors'
     } else {
         return 'Paper'
     }
-}
+  }
 
   render() {
     let game = null
     let getPlayer =null
+    let playerGames = this.state.gameHistory.filter((game) => {
+      return game.player === this.state.currentPlayer
+    })
 
     if(this.state.showGame) {
         game = (<Game 
-          games={this.state.gameHistory}
+          games={playerGames}
           player={this.state.currentPlayer}
-          onclick={this.handleUserSelection} />)  
+          onclick={this.handleUserSelection}
+          changePlayer={this.changePlayerHander} />)  
     } else {
         getPlayer = (
         <PlayerInput 

@@ -1,0 +1,13 @@
+.changePlayer {
+    outline: none;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background: #c7c3c3;
+    padding: 15px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.changePlayer:focus {
+  color: #0a0a0a;
+  background: #ffffff;
+}
