@@ -10,7 +10,8 @@ const EmojiResult = (props) => {
               key={emojiData.title}
               symbol={emojiData.symbol}
               title={emojiData.title}
-            
+              click={props.click}
+              keywords={emojiData.keywords}
             />
           ))}
         </div>
