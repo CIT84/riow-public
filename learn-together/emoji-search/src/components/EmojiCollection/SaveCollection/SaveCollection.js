@@ -5,9 +5,11 @@ const saveCollection = (props) => {
     
     return (
     <Aux>
+      <form onSubmit={props.saveToCloud}>
         <label>Name this Emoji Collection</label>
-        <input type="text"></input>
-        <button onClick={props.saveToCloud}>Save To Cloud</button>
+        <input type="text" required/>
+        <button >Save To Cloud</button>
+        </form>
     </Aux>
     )
 }

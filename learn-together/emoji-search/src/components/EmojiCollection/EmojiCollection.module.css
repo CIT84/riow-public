@@ -3,6 +3,8 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.5em;
    
+
+   
 }
 
 .EmojiCollection img {
@@ -10,3 +12,28 @@
     height: 32px;
     padding-right: 10px;
   }
+
+.CloudData {
+    display:flex;
+    justify-content: center;
+}
+
+.CloudItem a {
+    display: inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:rgb(75, 68, 68);
+    text-align:center;
+    transition: all 0.2s;
+   
+}
+
+.CloudItem a:hover{
+    color:#fdf7f7;
+    background-color:rgb(43, 39, 39);
+}

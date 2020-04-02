@@ -61,13 +61,15 @@ class App extends Component {
     })
   }
 
-  handleSaveToCloud = event => {
-    console.log('save to cloud')
-    axios.post('/collections.json', this.state.emojiCollection)
+  handleSaveToCloud = (event) => {
+    const collectionName = event.target[0].value
+    event.preventDefault()
+    axios.post(`/collections/${collectionName}.json`, this.state.emojiCollection)
     this.setState({
       saving: false,
       emojiCollection: ''
     })
+    event.target[0].value = ''
   }
 
 
