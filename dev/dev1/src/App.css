@@ -1,0 +1,139 @@
+.App {
+  text-align: center;
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 1.5vmin);
+  color: white;
+}
+
+.App h1 {
+  font-size: 1.6em;
+}
+.App .rock {
+  color: #f0547d
+}
+
+.App .scissors {
+  color:#80d0de;
+}
+
+.App .paper {
+  color:#fada5c;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.form * {
+  box-sizing: border-box;
+  line-height: 1.5
+
+}
+
+.formItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.formItems > * {
+  align-self: flex-start
+}
+
+.formLabel {
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.formInput {
+  -webkit-appearance: none;
+  width: 100%;
+  max-width: 425px;
+  min-height: calc(0.9em + (0.8em * 2) + 0.6em);
+  font-size: 0.9em;
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #ccc1c1;
+  transition: backgound 0.25,border-color 0.25s, color 0.25s;
+}
+
+.formInput:focus {
+  background: #ffffff;
+}
+
+.formInput::placeholder {
+  color: #a89595;
+  font-size: 0.9em;
+}
+
+.form button {
+  font-family: 'Acme', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 10px 26px;
+  margin: 20px 75px;
+  color: #ffffff;
+  background: #f0547d;
+  border: 2px solid #a90f57;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn {
+  font-family: 'Acme', sans-serif;
+  font-weight: 400;
+  font-size: 0.7em;
+  padding: 10px 10px;
+  margin: 10px 20px;
+  color: #ffffff;
+  background: #f0547d;
+  border: 2px solid #a90f57;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.formError {
+  width: 200px;
+  margin: auto;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(241, 235, 235, 0.5);
+}
+
+.modal-box {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20%;
+  width: 70%;
+  overflow-y: auto;
+  background-color:#a1e8f5;
+  box-shadow: 0 0 10px rgba(0,0,0);
+  z-index: 101;
+  padding: 40px;
+
+}
