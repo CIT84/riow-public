@@ -3,6 +3,10 @@ import { withRouter, Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import firebase from './firebase'
 import { AuthContext } from './Auth'
+import Title from '../components/UI/Title'
+import SubTitle from '../components/UI/SubTitle'
+import Input from '../components/UI/Input'
+
 
 const Login = ({ history }) => {
     const [error, setError] = useState(null)
@@ -53,6 +57,8 @@ const Login = ({ history }) => {
                 await firebase
                     .auth()
                     .signInWithEmailAndPassword(email.value, password.value)
+                email.value = ''
+                password.value=''
                 history.push("/game")
             } catch (error) {
                 setError(error.message)
@@ -71,31 +77,26 @@ const Login = ({ history }) => {
 
     return (
         <div>
-            <h1><span className="rock">To </span><span className="scissors">Play</span> <span className="paper">Login</span></h1>
+            <Title />
+            <SubTitle subtxt={"Login"} />
             <form className="form" onSubmit={handleLogin}>
-                <div className="formItems">
-                    <label className="scissors formLabel"> Please Input</label>
-                    <input
-                        onInput={clearErrorHandle}
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        className="formInput"
-                        required />
-                </div>
-                <div className="formItems">
-                    <label className="scissors formLabel"> & Provide</label>
-                    <input
-                        onInput={clearErrorHandle}
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        className="formInput"
-                        required />
-                </div>
-                <div className="formItems">
+                <Input
+                    handleInput={clearErrorHandle} 
+                    labTxt={"Please Input"}
+                    nameTxt={"email"}
+                    inputType={"email"}
+                    placeHoldTxt={"Email"}
+                    />
+                <Input
+                    handleInput={clearErrorHandle} 
+                    labTxt={"& Provide"}
+                    nameTxt={"password"}
+                    inputType={"password"}
+                    placeHoldTxt={"Password"}
+                    />
+                
                     <button type="submit">Login</button>
-                </div>
+                
             </form>
             {error !== null && (
                 <div className="rock formError">{error}</div>

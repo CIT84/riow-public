@@ -125,11 +125,11 @@
 .modal-box {
   text-align: center;
   position: relative;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 20%;
-  width: 70%;
+  width: 40%;
   overflow-y: auto;
   background-color:#a1e8f5;
   box-shadow: 0 0 10px rgba(0,0,0);

@@ -3,7 +3,8 @@ import rock from '../../assets/rock.jpg'
 import paper from '../../assets/paper.jpg'
 import scissors from '../../assets/scissors.jpg'
 import firebase from '../../auth/firebase'
-import Modal from '../../UI/Modal'
+import Modal from '../../components/UI/Modal'
+import Title from '../../components/UI/Title'
 
 const Game = () => {
     const [user, setUser] = useState({})
@@ -30,7 +31,6 @@ const Game = () => {
     }, [])
 
     useEffect(()=>{
-        console.log('useEffect', game)
         const [db, uid, docRef] = setupFirebase()
         if(game.result) {
             console.log('updating datatbase')
@@ -139,7 +139,11 @@ const Game = () => {
     
     return (
         <>
-            <h1><span className="rock">Hello</span> <span className="scissors">{user.playername}</span></h1> 
+            <Title />
+            <h1>
+                <span className="rock">Hello</span> 
+                <span className="scissors">{user.playername}</span>
+            </h1> 
             <button className="btn" onClick={() => firebase.auth().signOut()}>Sign Out</button>
             <div>
                 <img src={rock} alt="rock" name="Rock" onClick={handleUserSelection} />

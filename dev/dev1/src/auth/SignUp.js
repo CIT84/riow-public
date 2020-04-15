@@ -2,86 +2,74 @@ import React, { useCallback, useState } from 'react'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import firebase from './firebase'
+import Title from '../components/UI/Title'
+import SubTitle from '../components/UI/SubTitle'
+import Input from '../components/UI/Input'
 
 const SignUp = ({ history }) => {
     const [error, setError] = useState(null)
+    
     const handleSignUp = useCallback(async event => {
         event.preventDefault()
         const { email, password, playername } = event.target.elements
         try {
             await firebase
-              .auth()
-              .createUserWithEmailAndPassword(email.value, password.value)
-              .then((results) => {
-                const db = firebase.firestore()
-              
-                db.collection("players").doc(`${results.user.uid}`).set({
-                    playerInfo: {
-                        playerame: playername.value,
-                        playeremail: email.value
+                .auth()
+                .createUserWithEmailAndPassword(email.value, password.value)
+                .then((results) => {
+                    const db = firebase.firestore()
+                    db.collection("players").doc(`${results.user.uid}`).set({
+                        playerInfo: {
+                            playerame: playername.value,
+                            playeremail: email.value
+                        }
+                    })
+                }).then(() => {
+                    console.log('data written to database')
+                    email.value = ''
+                    password.value = ''
+                    playername.value = ''
+                    history.push("/Game")
 
-                    }
-                })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-              }).then(()=>{
-                  console.log('data written to database')
-                  email.value = ''
-                  password.value=''
-                  playername.value=''
-                  history.push("/Game")
-
-              })
-              
+                })
         } catch (error) {
             setError(error.message)
-           
         }
 
     }, [history])
 
-  
     const clearErrorHandle = () => {
         setError(null)
     }
 
     return (
         <div>
-        
-           <h1><span className="rock">To </span><span className="scissors">Play</span> <span className="paper">SignUp</span></h1>
-           <form className="form" onSubmit={handleSignUp} >
-                <div className="formItems">
-                    <label className="scissors formLabel"> Please Input</label>
-                    <input
-                        onInput={clearErrorHandle}
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        className="formInput"
-                        required />
-                </div>
-                <div className="formItems">
-                <label className="scissors formLabel"> & Provide</label>
-                    <input 
-                        name="password" 
-                        type="password" 
-                        placeholder="Password"
-                        onInput={clearErrorHandle}
-                        className="formInput"
-                        required />              
-                </div>
-                <div className="formItems">
-                <label className="scissors formLabel"> & Player Name</label>
-                    <input 
-                        name="playername" 
-                        type="text"
-                        placeholder="Player Name"
-                        onInput={clearErrorHandle}
-                        className="formInput"
-                        required />              
-                </div>
-                
+            <Title />
+            <SubTitle subtxt={"SignUp"} />
+            <form className="form" onSubmit={handleSignUp} >
+                <Input
+                    handleInput={clearErrorHandle}
+                    labTxt={"Please Input"}
+                    nameTxt={"email"}
+                    inputType={"email"}
+                    placeHoldTxt={"Email"}
+                />
+                <Input
+                    handleInput={clearErrorHandle}
+                    labTxt={"& Provide"}
+                    nameTxt={"password"}
+                    inputType={"password"}
+                    placeHoldTxt={"Password"}
+                />
+                <Input
+                    handleInput={clearErrorHandle}
+                    labTxt={"& Player Name"}
+                    inputType={"text"}
+                    nameTxt={"playername"}
+                    placeHoldTxt={"Player Name"}
+                />
                 <button type="submit">Sign Up</button>
-               
-            </form> 
+            </form>
             {error !== null && (
                 <div className="rock formError">{error}</div>
             )}

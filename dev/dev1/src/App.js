@@ -13,15 +13,9 @@ import PrivateRoute from './auth/PrivateRoute'
 
 const App = () => {
   return (
-
     <AuthProvider>
       <Router>
         <div className="App">
-            <h1>
-              <span className="rock"> Rock ||</span>
-              <span className="scissors"> Scissors ||</span>
-              <span className="paper"> Paper ||</span>
-            </h1>
             <PrivateRoute exact path="/game" component={Game} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
