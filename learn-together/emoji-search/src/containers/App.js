@@ -49,7 +49,6 @@ class App extends Component {
   }
 
   handleSaveToCollection = () => {
-   
     this.setState({
       saving: true
     })

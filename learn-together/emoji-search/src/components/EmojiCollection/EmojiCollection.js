@@ -6,6 +6,7 @@ import SaveCollection from './SaveCollection/SaveCollection'
 
 const EmojiCollection = (props) => {
     const [cloudData, setCloudData] = useState([])
+    
     useEffect(()=>{
         fetch(
            'https://cit94-1517426142976.firebaseio.com/emoji/collections.json',
@@ -14,10 +15,8 @@ const EmojiCollection = (props) => {
          .then(response => {
              let collectionArr = []
              for (let [key, value] of Object.entries(response)) {
-                console.log(`${key}, ${value}`)
                 let arr = []
                 for (let [interkey, intervalue] of Object.entries(value)){
-                  console.log(`${interkey}, ${intervalue}`)  
                   arr.push(intervalue)   
                 }
                 collectionArr.push({key, arr})
@@ -26,7 +25,7 @@ const EmojiCollection = (props) => {
              setCloudData(collectionArr)
          })
          .catch(error => console.log(error))
-    }, [props.currentCollection])
+    }, [cloudData])
 
     let emojiCloudData
     if(cloudData.length === 0) {
