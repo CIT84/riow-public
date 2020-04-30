@@ -1,11 +1,13 @@
 import React from 'react';
 
+
 function Collection() {
+
     return (
         <div className="App">
-            <header className="App-header">
-                <h1>Collections will be listed here</h1>
-            </header>
+        
+                <h1 className="App-heading">Collections will be listed here</h1>
+          
         </div>
     );
 }

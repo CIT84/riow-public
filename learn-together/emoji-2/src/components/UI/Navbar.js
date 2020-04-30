@@ -1,40 +1,39 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button, AppBar, Toolbar } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 
 function Navbar() {
     return (
-        <div className="App-nav">
-            <Button 
-                size="large"
-                component={NavLink} 
-                to="/" 
-                variant="contained" 
-                
-                activeStyle={{ color: 'black' }}
-                exact
-                >Home
-            </Button>
-            <Button
-                size="large"
-                color="secondary"
-                component={NavLink}
-                to="/search"
-                activeStyle={{ color: 'black' }}
-                variant="contained" >
-                Search
-            </Button>
-            <Button
-                size="large"
-                color="secondary"
-                component={NavLink}
-                activeStyle={{ color: 'black' }}
-                to="/collection"
-                variant="contained" >
-                Collection
-            </Button>
-        </div>
-    );
-};
+        <AppBar>
+            <Toolbar>
+                <Button
+                    size="small"
+                    color="secondary"
+                    component={NavLink}
+                    to="/"
+                    activeStyle={{ color: 'white' }}
+                    exact
+                    >Home
+                </Button>
+                <Button
+                    size="small"
+                    color="secondary"
+                    component={NavLink}
+                    to="/search"
+                    activeStyle={{ color: 'white' }}
+                    >Search
+                </Button>
+                <Button
+                    size="small"
+                    color="secondary"
+                    component={NavLink}
+                    activeStyle={{ color: 'white' }}
+                    to="/collection"
+                    >Collection
+                </Button>
+            </Toolbar>
+        </AppBar>
+    )
+}
 
 export default Navbar

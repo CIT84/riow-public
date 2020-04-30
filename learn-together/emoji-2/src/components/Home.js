@@ -1,16 +1,13 @@
-import React from 'react';
-import eimg from '../assets/emoji.jpg'
-
+import React from 'react'
+import eimg from '../assets/cover.png'
 
 function Home() {
     return (
         <div className="App">
-            <header className="App-header">
-                <h1>Welcome to Your Home for Emoji Search! </h1>
-                <img src={eimg} alt="emoji search" />
-            </header>
+                <h1 className="App-heading">Emoji Search</h1>
+                <img src={eimg} className="App-home-png" alt="emoji search" />
         </div>
-    );
+    )
 }
 
 export default Home;
