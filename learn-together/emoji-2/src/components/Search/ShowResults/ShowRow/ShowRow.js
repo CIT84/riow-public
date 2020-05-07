@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 
 const ShowRow = (props) => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false)
 
     const handleClick = () => {
         setOpen(true);
@@ -25,39 +25,38 @@ const ShowRow = (props) => {
     const output = props.title + ' added to unsaved collection'
 
     return (
-            
             <div className="App-ShowResults">
-            <Button 
-                variant="outlined"  
-                color="secondary" 
-                onClick={handleClick}
+                <Button 
+                    variant="outlined"  
+                    color="secondary" 
+                    onClick={handleClick}
+                    >
+                    <img 
+                        alt={props.title} 
+                        src={src} />
+                </Button>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    open={open}
+                    autoHideDuration={3000}
+                    onClose={handleClose}
+                    message={output}
+                    action={
+                        <>
+                            <IconButton 
+                                size="small" 
+                                aria-label="close" 
+                                color="inherit" 
+                                onClick={handleClose}>
+                                <CloseIcon fontSize="small" />
+                            </IconButton>
+                        </>
+                    }
                 >
-                <img 
-                    alt={props.title} 
-                    src={src} />
-            </Button>
-            <Snackbar
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                }}
-                open={open}
-                autoHideDuration={3000}
-                onClose={handleClose}
-                message={output}
-                action={
-                    <>
-                        <IconButton 
-                            size="small" 
-                            aria-label="close" 
-                            color="inherit" 
-                            onClick={handleClose}>
-                            <CloseIcon fontSize="small" />
-                        </IconButton>
-                    </>
-                }
-            >
-            </Snackbar>
+                </Snackbar>
             </div>
 
     )
