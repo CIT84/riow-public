@@ -5,6 +5,7 @@ import scissors from '../../assets/scissors.jpg'
 import firebase from '../../auth/firebase'
 import Modal from '../../components/UI/Modal'
 import Title from '../../components/UI/Title'
+import Footer from '../../components/UI/footer'
 
 const Game = () => {
     const [user, setUser] = useState({})
@@ -25,6 +26,8 @@ const Game = () => {
         docRef.get().then((doc) =>{
             const playername = doc.data().playerInfo.playerame
             setUser({playername: playername, uid: uid})
+        }).catch((error) => {
+            firebase.auth().signOut()
         })
         updateStats(db, uid)
         
@@ -144,7 +147,7 @@ const Game = () => {
                 <span className="rock">Hello</span> 
                 <span className="scissors">{user.playername}</span>
             </h1> 
-            <button className="btn" onClick={() => firebase.auth().signOut()}>Sign Out</button>
+           
             <div>
                 <img src={rock} alt="rock" name="Rock" onClick={handleUserSelection} />
                 <img src={scissors} alt="scissors" name="Scissors" onClick={handleUserSelection} />
@@ -163,6 +166,7 @@ const Game = () => {
                     <span className="scissors"> Loss : </span>{stats[2]}
                     <span className="paper"> Tie : </span>{stats[3]}
                 </h1>
+                <Footer />
             </div>
         </>
     )

@@ -9,6 +9,34 @@
   color: white;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  width: 100%;
+  background: #f0547d;
+  color: #fada5c
+}
+
+.nav-links {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #80d0de;
+}
+
+.content {
+  width: 70%;
+  padding: 20px;
+}
+
 .App h1 {
   font-size: 1.6em;
 }
