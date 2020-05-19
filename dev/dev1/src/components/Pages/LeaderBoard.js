@@ -6,7 +6,8 @@ import Footer from '../UI/footer'
 
 const LeaderBoard = () => {
   const [lb, setLB] = useState([]);
-
+  const [rank, setRank] = useState([])
+ 
   useEffect(() => {
     const db = firebase.firestore();
     let lbArr = [];
@@ -45,8 +46,35 @@ const LeaderBoard = () => {
     };
     fetchLBData();
   }, []);
+  
+  useEffect(()=> {
+      
+      const db = firebase.firestore();
+      const user = firebase.auth().currentUser
+      if(user != null) {
+        const uid = user.uid
+        const docRef = db.collection("players").doc(uid)
+        docRef.get().then((doc) => {
+        const playername = doc.data().playerInfo.playerame
+        
+        const rank = lb.findIndex(lb => lb.name === 
+          playername)
+        setRank([rank + 1, playername])  
+        })
+      }
+      
+  }, [lb])
+  
+  let rankOutput = null
+  if(rank.length !== 0) {
+    rankOutput = (
+      <h1 className="paper">{rank[1]} You are currently ranked <br />{rank[0]} on the LeaderBoard</h1>
+    )
+  }  else {
+    rankOutput = (<p>Loading....</p>)
+  }
 
-  let lbOutput = null;
+  let lbOutput = null
   if (lb.length === 0) {
     lbOutput = <h1>Loading....</h1>;
   } else {
@@ -60,6 +88,7 @@ const LeaderBoard = () => {
   return (
     <>
       <Title />
+      {rankOutput}
       <h1>
         <span className="rock">Leader</span>
         <span className="scissors">Board</span>

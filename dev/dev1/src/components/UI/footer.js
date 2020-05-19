@@ -10,7 +10,7 @@ const Footer = () => {
         footerOutput = (
           <>
             <p>Player is logged in:</p>
-            <Link to="/" onClick={() => firebase.auth().signOut()}>
+            <Link to="/" className="paper" onClick={() => firebase.auth().signOut()}>
                 SignOut
             </Link>    
           </>
@@ -22,7 +22,7 @@ const Footer = () => {
              <Link className="paper" to="/Login">
                Login
              </Link>
-             <Link className="scissors" to="/signup">
+             <Link className="paper" to="/signup">
                || SignUp
              </Link>
              <h3>Developer: Rio Waller</h3>

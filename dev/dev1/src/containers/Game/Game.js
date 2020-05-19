@@ -144,7 +144,7 @@ const Game = () => {
         <>
             <Title />
             <h1>
-                <span className="rock">Hello</span> 
+                <span className="rock">Hello </span> 
                 <span className="scissors">{user.playername}</span>
             </h1> 
            
@@ -162,7 +162,7 @@ const Game = () => {
                 <h1 className="scissors">GAME STATS</h1>
                 <h1>
                     <span>TOTAL : </span>{stats[0]}
-                    <span className="rock"> Loss : </span> {stats[1]}
+                    <span className="rock"> Wins : </span> {stats[1]}
                     <span className="scissors"> Loss : </span>{stats[2]}
                     <span className="paper"> Tie : </span>{stats[3]}
                 </h1>
